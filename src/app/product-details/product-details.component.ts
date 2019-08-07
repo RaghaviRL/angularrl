@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-
-  constructor() { }
+  product;
+  constructor(    private route: ActivatedRoute,
+) { }
 
   ngOnInit() {
+     this.route.paramMap.subscribe(params => {
+    this.product = products[+params.get('productId')];
+  });
   }
 
 }
